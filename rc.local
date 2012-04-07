@@ -1,3 +1,0 @@
-#!/bin/bash
-# /etc/rc.local: Local multi-user startup script.
-hdparm -B 254 /dev/sda # 调整硬盘参数，避免磁头频繁发出声音
