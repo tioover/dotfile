@@ -14,15 +14,16 @@ filetype on
 filetype plugin on
 " 为特定文件类型载入相关缩进文件
 filetype indent on
-" 不自动换行
-"set nowrap
+"在所有模式下都启用鼠标
+set mouse=a 
 " 使回格键（backspace）正常处理indent, eol, start等
 set backspace=2
 " 允许backspace和光标键跨越行边界
-set whichwrap+=<,>,h,l
+set whichwrap =b,s,<,>,[,],h,l
 " 显示行号
 set number
-" 不要用空格代替制表符
+" 缩进设置
+" 用空格代替制表符
 set expandtab
 set tabstop=4
 " 设置按BackSpace的时候可以一次删除掉4个空格
@@ -30,10 +31,13 @@ set softtabstop=4
 " 设定 << 和 >> 命令移动molokai时的宽度为 4
 set shiftwidth=4
 set smarttab
+set smartindent
 set history=1024
 "禁止生成临时文件
 set nobackup
 set noswapfile
+"循环搜索
+set wrapscan
 "搜索忽略大小写
 set ignorecase
 "搜索逐字符高亮
@@ -41,21 +45,23 @@ set hlsearch
 set incsearch
 "编码设置
 set enc=utf-8
-set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
+set fencs=utf-8,gbk,gb2312,ucs-bom,shift-jis,gb18030,cp936
 "语言设置
 set langmenu=zh_CN.UTF-8
 set helplang=cn
 " 高亮显示匹配的括号
 set showmatch
 " 设定配色方案
-colorscheme zmrok
+colorscheme molokai
 
-if has("gui_running")
+if has("gui_running") " 运行Gvim的情况
     set guioptions-=m " 隐藏菜单栏
     set guioptions-=T " 隐藏工具栏
+
+    " 字体设置
+    set guifont=monaco\ 11
 endif
 
-set guifont=monaco\ 11
 
 "在第80个字符处显示一条线
 hi ColorColumn guibg=#324248
