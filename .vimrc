@@ -1,5 +1,46 @@
-"新窗口大小
-set lines=30 columns=90
+" ==插件设置==
+
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+"
+" original repos on github
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'tpope/vim-fugitive'
+Bundle 'groenewege/vim-less'
+Bundle 'kevinw/pyflakes-vim'
+" vim-scripts repos
+Bundle 'python.vim'
+Bundle 'L9'
+Bundle 'nginx.vim'
+Bundle 'c.vim'
+Bundle 'Pydiction'
+Bundle 'molokai'
+Bundle 'FencView.vim'
+" non github repos
+
+ filetype plugin indent on     " required!
+"
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle command are not allowed..
+
+" ==普通设置==
+"将默认剪贴板设置为系统剪贴板
+set clipboard=unnamedplus
 "自动将当前目录设定为当前文件的目录
 set autochdir
 " 关闭 vi 兼容模式
@@ -8,14 +49,12 @@ set nocompatible
 set nowrap
 " 自动语法高亮
 syntax on
-" 检测文件类型
-filetype on
 " 检测文件类型插件
 filetype plugin on
 " 为特定文件类型载入相关缩进文件
 filetype indent on
-"在所有模式下都启用鼠标
-set mouse=a 
+" 在所有模式下都启用鼠标
+set mouse=a
 " 使回格键（backspace）正常处理indent, eol, start等
 set backspace=2
 " 允许backspace和光标键跨越行边界
@@ -32,6 +71,7 @@ set softtabstop=4
 set shiftwidth=4
 set smarttab
 set smartindent
+" 历史记录
 set history=1024
 "禁止生成临时文件
 set nobackup
@@ -46,28 +86,49 @@ set incsearch
 "编码设置
 set enc=utf-8
 set fencs=utf-8,gbk,gb2312,ucs-bom,shift-jis,gb18030,cp936
-"语言设置
+" 语言设置
 set langmenu=zh_CN.UTF-8
 set helplang=cn
-" 高亮显示匹配的括号
-set showmatch
-" 设定配色方案
-colorscheme molokai
 
-if has("gui_running") " 运行Gvim的情况
+" ==界面设置==
+if has("gui_running")
+    " set background=light 
+    set lines=30 columns=90 " 新窗口
     set guioptions-=m " 隐藏菜单栏
     set guioptions-=T " 隐藏工具栏
-
-    " 字体设置
-    set guifont=monaco\ 11
+else
+    " set background=dark
 endif
-
+colorscheme molokai
 
 "在第80个字符处显示一条线
 hi ColorColumn guibg=#324248
 set colorcolumn=80
-"将默认剪贴板设置为系统剪贴板
-set clipboard=unnamedplus
-let g:pydiction_location = '~/.vim/dict/complete-dict'
-"  支持less语言
-au BufNewFile,BufRead *.less set filetype=less
+
+" ==Python自动补全词典==
+let g:pydiction_location = "/home/tioover/.vim/bundle/Pydiction/complete-dict"
+
+" ==自动识别编码==
+let g:fencview_autodetect = 1
+let g:fencview_checklines = 10 
+
+" ===less 转换==
+nnoremap ,m :w <BAR> !lessc % > %:t:r.css<CR><space>
+
+" ==括号补全==
+:inoremap ( ()<ESC>i
+:inoremap ) <c-r>=ClosePair(‘)’)<CR>
+:inoremap { {}<ESC>i
+:inoremap } <c-r>=ClosePair(‘}’)<CR>
+:inoremap [ []<ESC>i
+:inoremap ] <c-r>=ClosePair(‘]’)<CR>
+:inoremap < <><ESC>i
+:inoremap > <c-r>=ClosePair(‘>’)<CR>
+
+function ClosePair(char)
+    if getline(‘.’)[col('.') - 1] == a:char
+        return "\<Right>"
+        else
+        return a:char
+    endif
+endf
