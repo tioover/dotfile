@@ -1,58 +1,6 @@
-" =普通设置=
-
-" 自动将当前目录设定为当前文件的目录
-set autochdir
-" 关闭 vi 兼容模式
-set nocompatible
-" 不自动换行
-set nowrap
-" 自动语法高亮
-syntax on
-" 检测文件类型
-filetype on
-" 检测文件类型插件
-filetype plugin on
-" 为特定文件类型载入相关缩进文件
-filetype indent on
-" 在所有模式下都启用鼠标
-set mouse=a
-" 使回格键（backspace）正常处理indent, eol, start等
-set backspace=2
-" 允许backspace和光标键跨越行边界
-set whichwrap =b,s,<,>,[,],h,l
-" 显示行号
-set number
-"历史记录
-set history=1024
-" 禁止生成临时文件
-set nobackup
-set noswapfile
-" 循环搜索
-set wrapscan
-" 搜索忽略大小写
-set ignorecase
-" 搜索逐字符高亮
-set hlsearch
-set incsearch
-" 编码设置
-set enc=utf-8
-set fencs=utf-8,gbk,gb2312,ucs-bom,shift-jis,gb18030,cp936
-" 语言设置
-set langmenu=zh_CN.UTF-8
-set helplang=cn
-" 高亮显示匹配的括号
-set showmatch
-" 设定配色方案
-colorscheme molokai
-
-" ==缩进设置==
-
-" 用空格代替制表符
-set expandtab
-set tabstop=4
-" 设置按BackSpace的时候可以一次删除掉4个空格
-set softtabstop=4
-" 设定 << 和 >> 命令移动molokai时的宽度为 4
-set shiftwidth=4
-set smarttab
-set smartindent
+#!/bin/bash
+export LANG=zh_CN.UTF-8
+autossh -f -M 20000 -ND 7070 tioover@106.187.48.122
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
