@@ -4,3 +4,4 @@ autossh -f -M 20000 -ND 7070 tioover@106.187.48.122
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
+#fcitx &
