@@ -16,7 +16,8 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-fugitive'
 Bundle 'groenewege/vim-less'
-Bundle 'kevinw/pyflakes-vim'
+Bundle 'Raimondi/delimitMate'
+Bundle 'hallison/vim-markdown'
 " vim-scripts repos
 Bundle 'python.vim'
 Bundle 'L9'
@@ -25,6 +26,8 @@ Bundle 'c.vim'
 Bundle 'Pydiction'
 Bundle 'molokai'
 Bundle 'FencView.vim'
+Bundle 'pyflakes.vim'
+Bundle 'JSON.vim'
 " non github repos
 
  filetype plugin indent on     " required!
@@ -114,21 +117,3 @@ let g:fencview_checklines = 10
 
 " ===less 转换==
 nnoremap ,m :w <BAR> !lessc % > %:t:r.css<CR><space>
-
-" ==括号补全==
-:inoremap ( ()<ESC>i
-:inoremap ) <c-r>=ClosePair(‘)’)<CR>
-:inoremap { {}<ESC>i
-:inoremap } <c-r>=ClosePair(‘}’)<CR>
-:inoremap [ []<ESC>i
-:inoremap ] <c-r>=ClosePair(‘]’)<CR>
-:inoremap < <><ESC>i
-:inoremap > <c-r>=ClosePair(‘>’)<CR>
-
-function ClosePair(char)
-    if getline(‘.’)[col('.') - 1] == a:char
-        return "\<Right>"
-        else
-        return a:char
-    endif
-endf
