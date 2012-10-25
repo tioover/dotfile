@@ -22,7 +22,7 @@ Bundle 'hallison/vim-markdown'
 Bundle 'python.vim'
 Bundle 'L9'
 Bundle 'nginx.vim'
-Bundle 'c.vim'
+"Bundle 'c.vim'
 Bundle 'Pydiction'
 Bundle 'molokai'
 Bundle 'FencView.vim'
@@ -72,6 +72,11 @@ set tabstop=4
 set softtabstop=4
 " 设定 << 和 >> 命令移动molokai时的宽度为 4
 set shiftwidth=4
+" language
+au FileType scheme set tabstop=2
+au FileType scheme set shiftwidth=2
+au FileType javascript set tabstop=2
+au FileType javascript set shiftwidth=2
 set smarttab
 set smartindent
 " 历史记录

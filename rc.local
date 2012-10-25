@@ -2,4 +2,5 @@
 # /etc/rc.local: Local multi-user startup script.
 
 #User settings.
-hdparm -B 254 /dev/sda
+/etc/rc.d/hdapsd start
+setfont /usr/share/kbd/consolefonts/LatGrkCyr-8x16.psfu.gz
