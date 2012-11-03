@@ -112,6 +112,9 @@ colorscheme molokai
 "在第80个字符处显示一条线
 hi ColorColumn guibg=#324248
 set colorcolumn=80
+" current column and line highlight.
+set cursorline
+set cursorcolumn
 
 " ==Python自动补全词典==
 let g:pydiction_location = "/home/tioover/.vim/bundle/Pydiction/complete-dict"
