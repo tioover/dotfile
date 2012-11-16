@@ -110,7 +110,7 @@ endif
 colorscheme molokai
 
 "在第80个字符处显示一条线
-hi ColorColumn guibg=#324248
+hi ColorColumn guibg=#304046
 set colorcolumn=80
 " current column and line highlight.
 set cursorline
