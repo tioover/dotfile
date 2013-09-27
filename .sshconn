@@ -1,2 +1,0 @@
-#!/bin/bash
-autossh -f -M 20000 -ND 7070 username@host

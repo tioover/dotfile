@@ -1,1 +1,0 @@
-kernel /vmlinuz-linux root=/dev/sda7 ro acpi_osi=Linux

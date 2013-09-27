@@ -1,127 +1,177 @@
-" ==插件设置==
-
+" # Vundle
 filetype off
-
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" let Vundle manage Vundle
-" required! 
+" ## Bundles
 Bundle 'gmarik/vundle'
-
-" My Bundles here:
-"
-" original repos on github
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'tpope/vim-fugitive'
-Bundle 'groenewege/vim-less'
-Bundle 'Raimondi/delimitMate'
-Bundle 'hallison/vim-markdown'
-" vim-scripts repos
-Bundle 'python.vim'
 Bundle 'L9'
-Bundle 'nginx.vim'
-"Bundle 'c.vim'
-Bundle 'Pydiction'
-Bundle 'molokai'
 Bundle 'FencView.vim'
-Bundle 'pyflakes.vim'
-Bundle 'JSON.vim'
-" non github repos
-
- filetype plugin indent on     " required!
-"
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
-
-" ==普通设置==
-"将默认剪贴板设置为系统剪贴板
-set clipboard=unnamedplus
-"自动将当前目录设定为当前文件的目录
-set autochdir
-" 关闭 vi 兼容模式
-set nocompatible
-" 不自动换行
-set nowrap
-" 自动语法高亮
-syntax on
-" 检测文件类型插件
-filetype plugin on
-" 为特定文件类型载入相关缩进文件
-filetype indent on
-" 在所有模式下都启用鼠标
-set mouse=a
-" 使回格键（backspace）正常处理indent, eol, start等
-set backspace=2
-" 允许backspace和光标键跨越行边界
-set whichwrap =b,s,<,>,[,],h,l
-" 显示行号
-set number
-" 缩进设置
-" 用空格代替制表符
-set expandtab
-set tabstop=4
-" 设置按BackSpace的时候可以一次删除掉4个空格
-set softtabstop=4
-" 设定 << 和 >> 命令移动molokai时的宽度为 4
-set shiftwidth=4
+Bundle 'kien/ctrlp.vim'
+"Bundle 'bling/vim-airline'
+"Bundle 'Lokaltog/powerline'
+Bundle 'humiaozuzu/fcitx-status'
+" coding
+Bundle 'majutsushi/tagbar'
+Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-fugitive'
+"Bundle 'Raimondi/delimitMate'
+"Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'Shougo/neocomplcache.vim'
+Bundle 'jiangmiao/auto-pairs'
+Bundle 'drmingdrmer/xptemplate'
+Bundle 'ervandew/supertab'
+"Bundle 'tpope/vim-surround'
+" color
+Bundle 'molokai'
+Bundle 'altercation/vim-colors-solarized'
 " language
-au FileType scheme set tabstop=2
-au FileType scheme set shiftwidth=2
-au FileType javascript set tabstop=2
-au FileType javascript set shiftwidth=2
-set smarttab
-set smartindent
-" 历史记录
-set history=1024
-"禁止生成临时文件
-set nobackup
-set noswapfile
-"循环搜索
-set wrapscan
-"搜索忽略大小写
-set ignorecase
-"搜索逐字符高亮
-set hlsearch
-set incsearch
-"编码设置
-set enc=utf-8
-set fencs=utf-8,gbk,gb2312,ucs-bom,shift-jis,gb18030,cp936
-" 语言设置
-set langmenu=zh_CN.UTF-8
-set helplang=cn
+Bundle 'TagHighlight'
+Bundle 'OmniCppComplete'
+""Bundle 'pythoncomplete'
+Bundle 'othree/xml.vim'
+""Bundle 'hdima/python-syntax'
+Bundle 'nginx.vim'
+Bundle 'JSON.vim'
+"Bundle 'pangloss/vim-javascript'
+Bundle 'nono/jquery.vim'
+Bundle 'othree/html5.vim'
+Bundle 'groenewege/vim-less'
+Bundle 'hallison/vim-markdown'
+" Bundle 'klen/python-mode'
 
-" ==界面设置==
+" ## Bundles END
+
+filetype plugin indent on
+" # Vundle END
+
+
+" # Common
+set modeline "读取默认tab 设定
+set clipboard=unnamedplus "将默认剪贴板设置为系统剪贴板
+set autochdir "自动将当前目录设定为当前文件的目录
+set nowrap "不自动换行
+syntax on " 语法高亮
+filetype plugin on " 检测文件类型插件
+set mouse=a " 启用鼠标
+set number
+set history=1024 " 历史记录
+set nobackup " 禁止生成临时文件
+set noswapfile " 禁止生成临时文件
+set backspace=2 " 使回格键（backspace）正常处理indent, eol, start等
+set whichwrap =b,s,<,>,[,],h,l " 允许backspace和光标键跨越行边界
+set foldlevel=99
+set completeopt-=preview
+set noerrorbells
+set visualbell
+set t_vb=
+let g:statline_syntastic = 0 " 插件兼容设定
+let g:syntastic_check_on_open=1 " 在打开文件的时候检查
+let g:ctrlp_map = '<c-p>' " CTRL P
+let g:ctrlp_cmd = 'CtrlP'
+
+" ## Autocomplete
+" ### SuperTab
+let g:SuperTabRetainCompletionType=2
+let g:SuperTabDefaultCompletionType="<C-X><C-U>" " SuperTab 调用NeoComplCache
+
+" #### SuperTab with XPTemplate
+" avoid key conflict
+let g:SuperTabMappingForward = '<Plug>supertabKey'
+
+" if nothing matched in xpt, try supertab
+let g:xptemplate_fallback = '<Plug>supertabKey'
+
+" xpt uses <Tab> as trigger key
+let g:xptemplate_key = '<Tab>'
+
+" " use <tab>/<S-tab> to navigate through pum. Optional
+" let g:xptemplate_pum_tab_nav = 1
+
+" " xpt triggers only when you typed whole name of a snippet. Optional
+" let g:xptemplate_minimal_prefix = 'full'
+
+
+" ### NeoComplcache
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplcache_disable_auto_complete = 1
+
+"inoremap <expr><Tab>  pumvisible() ? "\<C-n>" : "\<Tab>"
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" ## Autocomplete END
+
+" ## Language and encode
+set langmenu=zh_CN.UTF-8 " 菜单语言
+set imcmdline   
+source $VIMRUNTIME/delmenu.vim   
+source $VIMRUNTIME/menu.vim
+set helplang=cn " 帮助语言
+let g:fencview_autodetect = 1 " 插件打开文件自动识别编码
+let g:fencview_checklines = 10 " 插件通过检查十行来识别编码
+" ## Language and encode END
+
+" ## Search
+set wrapscan "循环搜索
+set ignorecase "搜索忽略大小写
+set hlsearch "搜索逐字符高亮
+" ## Search END
+
+" ## Indent
+filetype indent on " 缩进文件
+" to see http://linux-wiki.cn/wiki/zh-hans/Vim代码缩进设置
+set autoindent smartindent cindent et sta sw=4 ts=4 sts=4
+autocmd FileType scheme setlocal sw=2 ts=2 sts=2
+autocmd FileType javascript setlocal sw=2 ts=2 sts=2
+autocmd FileType python setlocal foldmethod=indent
+" ## Indent END
+
+" #Common END
+
+" #UI
+colorscheme molokai
+"colorscheme solarized
+set cursorline " 高亮当前行
+set cursorcolumn " 高亮当前列
+
+" ## 80 line
+"hi ColorColumn guibg=#304046
+"set colorcolumn=80
+" ## 80 line end
+
+
+" ## PowerLine
+set laststatus=2
+set t_Co=256
+" ## PowerLine END
+
+
+
+" ##GUI
 if has("gui_running")
-    " set background=light 
+    "set background=light
+    set guifont=DejaVu\ Sans\ Mono\ 10
     set lines=30 columns=90 " 新窗口
     set guioptions-=m " 隐藏菜单栏
     set guioptions-=T " 隐藏工具栏
+    set guioptions=
 else
-    " set background=dark
+    "set background=dark
 endif
-colorscheme molokai
+" ##GUI END
 
-"在第80个字符处显示一条线
-hi ColorColumn guibg=#304046
-set colorcolumn=80
-" current column and line highlight.
-set cursorline
-set cursorcolumn
+" #UI END
 
-" ==Python自动补全词典==
-let g:pydiction_location = "/home/tioover/.vim/bundle/Pydiction/complete-dict"
 
-" ==自动识别编码==
-let g:fencview_autodetect = 1
-let g:fencview_checklines = 10 
+" # Map
+"map <C-i> <leader>ig " indent guide
+nmap <F8> :TagbarToggle<CR>
 
-" ===less 转换==
-nnoremap ,m :w <BAR> !lessc % > %:t:r.css<CR><space>
+" # Map END
