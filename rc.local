@@ -1,5 +1,0 @@
-#!/bin/bash
-# /etc/rc.local: Local multi-user startup script.
-
-#User settings.
-setfont /usr/share/kbd/consolefonts/LatGrkCyr-8x16.psfu.gz
